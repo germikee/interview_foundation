@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RepositoryResource;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        $data = [
+            'token' => $user->github_token
+        ];
+
+        if ($repositories = $user->repositories) {
+            $data['repositories'] = RepositoryResource::collection($repositories);
+        }
+
+        return view('home')->with($data);
     }
 }

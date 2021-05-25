@@ -12,7 +12,13 @@
                         </div>
                     @endif
                 </div>
-                <add-github-token></add-github-token>
+
+                @if ($token)
+                    <starred-repos token="{{ $token }}" :repositories="{{ json_encode($repositories ?? '') }}"></starred-repos>
+                @else
+                    <add-github-token></add-github-token>
+                @endif
+
             </div>
         </div>
     </div>
