@@ -25,6 +25,7 @@ Vue.use(BootstrapVue);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('add-github-token', require('./components/AddGithubToken.vue').default);
+Vue.component('starred-repos', require('./components/StarredRepos.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

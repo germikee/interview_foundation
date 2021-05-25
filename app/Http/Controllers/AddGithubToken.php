@@ -20,7 +20,7 @@ class AddGithubToken extends Controller
     {
         $user = $request->user();
 
-        $user->fill(['github_token' => Crypt::encryptString($request->token),])->save();
+        $user->fill(['github_token' => Crypt::encryptString($request->token)])->save();
 
         return new UserResource($user);
     }
